@@ -1,0 +1,121 @@
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+}
+
+.layout {
+  position: relative;        
+  width: 100%;
+  border: 5px solid red;
+  padding: 0;
+}
+
+.col{
+  float: left;             
+  padding: 12px;          
+}
+
+.box{
+  border: 4px solid red;
+  background: transparent;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;               
+  left: 0;
+  width: 20%;
+}
+
+.sidebar.col {
+  padding: 0;
+}
+
+.main {
+  width: 80%;
+  margin-left: 20%;        
+  padding: 12px;
+}
+
+.row{
+    width: 100%;
+}
+
+.w25{ 
+    width: 25%;
+}
+
+.w50{ 
+    width: 50%;
+}
+
+.w70{ 
+    width: 70%;
+}
+
+.w30{
+    width: 30%;
+}
+
+.small{
+    height: 90px;
+}
+
+.bar{
+  height: 55px;
+  margin-bottom: 16px;     
+}
+
+.bar:last-child{
+    margin-bottom: 0;
+}
+
+.medium{
+    height: 190px;
+}
+
+.cf::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 750px){
+
+  .sidebar, .main,
+  .w25, .w50, .w70, .w30{
+    width: 100%;
+  }
+
+  .sidebar{ position: static; height: auto; }
+  .main{ margin-left: 0; }
+
+  .box{
+    height: 140px;      
+  }
+
+  .small, .medium, .bar, .mid-right{
+    height: 140px;
+  }
+
+  .margin16,
+  .bar{
+    margin-bottom: 16px;
+  }
+  .bar:last-child{
+    margin-bottom: 16px;
+  }
+}
+
+.sidebar .box.tall{
+  height: 100%;
+  width: 100%;
+}
+
+.margin16{
+  margin-bottom: 16px;
+}
