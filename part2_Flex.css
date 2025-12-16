@@ -1,0 +1,116 @@
+/* Part B2 - Same layout as Part A, but using Flex instead of CSS-Plain
+   Flex is better than CSS-Plain because:
+   - It's cleaner and simpler to use for layouts
+   - It automatically aligns items in rows and columns
+   - It's easier to make responsive on mobile
+   - CSS-Plain was just a "hack" for layouts, Flex was designed for this */
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+/* Main container that wraps the whole page
+   Uses flex to split the page into two columns (sidebar and main content) */
+.layout{
+  width: 100%;
+  border: 5px solid red;
+  padding: 0;
+
+  /* Make the layout fill the viewport so sidebar can be full-height
+     (this makes the left tall box appear along the whole screen). */
+  min-height: 100vh;
+  display: flex;  /* Creates a flex container to arrange columns */
+  align-items: stretch;
+}
+
+/* Student note: using Flex here replaces old float-based layouts.
+   Flex makes it easy to place the sidebar and main next to each other
+   and to change their order or stacking on small screens. */
+
+/* Left sidebar - takes up 20% of the page width */
+.sidebar{
+  width: 20%;
+}
+
+/* Student note: the sidebar holds the tall box on the left in desktop.
+   It is separate from .main so we can control width and stacking. */
+
+/* Right main content area - takes up 80% of the page width */
+.main{
+  width: 80%;
+  padding: 12px;
+}
+
+/* Style for each box/rectangle on the page */
+.box{
+  border: 4px solid red;
+  background: transparent;
+}
+
+/* Student note: .box is a visual rectangle used many times.
+   Heights are set by .small/.medium or by the media query. */
+
+/* Row class - uses flex to arrange boxes horizontally in a row */
+.row{
+  display: flex;       /* Arranges child items in a horizontal line */
+  width: 100%;
+}
+
+/* Student note: .row is a horizontal group of .col children on desktop.
+   Each .col uses width classes (w25, w50, etc.) to size boxes. */
+
+/* Column class - adds padding inside each box */
+.col{
+  padding: 12px;
+}
+
+/* Width classes - define how much space each box takes in a row */
+.w25{ width: 25%; }
+.w50{ width: 50%; }
+.w70{ width: 70%; }
+.w30{ width: 30%; }
+
+/* Height classes - set different heights for boxes */
+.small{ height: 90px; }
+.medium{ height: 190px; }
+
+/* Adds space below small boxes (used to separate stacked boxes) */
+.margin16{ margin-bottom: 16px; }
+
+/* Sidebar tall box: fills the sidebar height on desktop */
+.sidebar .box.tall{
+  height: 100%;
+  width: 100%;
+}
+
+/* Mobile responsive design - for screens 750px or smaller
+   The layout changes from two columns to a single column stack */
+@media (max-width: 750px){
+
+  /* Changes the layout from horizontal (two columns) to vertical (one column) */
+  .layout{
+    flex-direction: column;
+  }
+
+  /* Makes all sections full width on mobile */
+  .sidebar, .main,
+  .w25, .w50, .w70, .w30{
+    width: 100%;
+  }
+
+  /* Stacks boxes vertically instead of horizontally in a row */
+  .row{
+    flex-direction: column;
+  }
+
+  /* Makes all boxes the same height for consistent mobile appearance */
+  .box{ height: 140px; }
+  .small, .medium{ height: 140px; }
+
+    /* Student note: On mobile the page stacks vertically.
+      The sidebar becomes full-width and each row's children stack.
+      This media query makes layout simpler for narrow screens. */
+
+  /* Keeps spacing between boxes on mobile */
+  .margin16{ margin-bottom: 16px; }
+}
+ 
