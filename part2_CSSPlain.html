@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="he"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="part2_CSSPlain.css">
+</head>
+<body>
+  <!--
+    Layout notes:
+    - This page uses only plain CSS with floats and percentage widths.
+    - Class naming: use `col-*` for width fractions and `height*` for vertical sizing.
+    - Use `clearfix` on containers to clear floated children.
+    - Below 750px a media query stacks all boxes into a single column.
+    - Do NOT add text inside the boxes; boxes are visual only (red borders).
+  -->
+
+  <!-- Left sidebar: 16.66% width, full height -->
+  <div class="col-2 height"></div>
+
+  <!-- Main area: 83.33% width -->
+  <div class="col-10 height clearfix">
+    <!-- Top row: 4 boxes, each 25% (col-3), 20% height -->
+    <div class="col-3 height2"></div>   
+    <div class="col-3 height2"></div>
+    <div class="col-3 height2"></div>
+    <div class="col-3 height2"></div>
+    <div class="col-6 height2"></div>
+    <div class="col-6 height5"></div>
+    <div class="col-6 height5"></div>
+
+    <!-- Right: 66.66% (col-8) tall box -->
+    <div class="col-9 height2"></div>
+    <div class="col-3 height2"></div>
+  </div>
+</body>
+</html>
